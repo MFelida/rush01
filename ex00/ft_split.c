@@ -6,7 +6,7 @@
 //   By: mifelida <mifelida@student.email.com>       +#+                      //
 //                                                  +#+                       //
 //   Created: 2025/07/30 14:17:22 by mifelida     #+#    #+#                  //
-//   Updated: 2025/07/30 14:59:42 by mifelida     ########   odam.nl          //
+//   Updated: 2025/08/06 19:32:40 by mifelida     ########   odam.nl          //
 //                                                                            //
 // ************************************************************************** //
 
@@ -20,7 +20,7 @@ static size_t	_word_len(const char *str, const char *ws)
 	size_t	res;
 
 	res = 0;
-	while (str[res] != '\0' && ft_strchr(ws, str[res]))
+	while (str[res] != '\0' && !ft_strchr(ws, str[res]))
 		res++;
 	return (res);
 }
@@ -47,7 +47,7 @@ static size_t	_count_words(const char *str, const char *ws)
 	return (res);
 }
 
-void	ft_split_free(const char **split)
+void	ft_split_free(char **split)
 {
 	size_t	i;
 
@@ -55,7 +55,7 @@ void	ft_split_free(const char **split)
 		return ;
 	i = 0;
 	while (split[i] != NULL)
-		free((char *) split[i++]);
+		free(split[i++]);
 	free(split);
 }
 
@@ -63,7 +63,7 @@ char	**ft_split(const char *str, const char *ws)
 {
 	char	**res;
 	char	**temp;
-	
+
 	if (str == NULL)
 		return (NULL);
 	res = malloc((_count_words(str, ws) + 1) * sizeof(char *));

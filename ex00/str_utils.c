@@ -6,10 +6,9 @@
 //   By: mifelida <mifelida@student.email.com>       +#+                      //
 //                                                  +#+                       //
 //   Created: 2025/07/30 14:27:01 by mifelida     #+#    #+#                  //
-//   Updated: 2025/07/30 14:29:24 by mifelida     ########   odam.nl          //
+//   Updated: 2025/08/06 19:22:36 by mifelida     ########   odam.nl          //
 //                                                                            //
 // ************************************************************************** //
-
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -23,6 +22,7 @@ size_t	ft_strlen(const char *str)
 		res++;
 	return (res);
 }
+
 size_t	ft_strlcpy(const char *src, char *dest, size_t l)
 {
 	const unsigned char	*s;
@@ -30,7 +30,7 @@ size_t	ft_strlcpy(const char *src, char *dest, size_t l)
 
 	s = (const unsigned char *) src;
 	d = (unsigned char *) dest;
-	while (l > 1)
+	while (l-- > 1)
 		*d++ = *s++;
 	*d = '\0';
 	return (ft_strlen(src));
